@@ -12,6 +12,7 @@
         <module>service-ribbon</module>
         <module>service-feign</module>
         <module>service-zuul</module>
+        <module>eureka-server</module>
     </modules>
     <packaging>pom</packaging>
 
