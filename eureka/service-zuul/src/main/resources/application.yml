@@ -1,0 +1,27 @@
+# 服务属性配置
+server:
+  port: 8769
+
+# eureka地址配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# 服务名称
+spring:
+  application:
+    name: service-zuul
+
+# zuul配置
+zuul:
+  routes:
+    # 路由规则
+    api-a:
+      # 以/api-a/ 开头的请求都转发给service-ribbon服务
+      path: /api-a/**
+      serviceId: service-ribbon
+    api-b:
+      # 以/api-b/开头的请求都转发给service-feign服务
+      path: /api-b/**
+      serviceId: service-feign
