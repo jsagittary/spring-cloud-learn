@@ -1,0 +1,42 @@
+# 服务端口
+server:
+  port: 8882
+
+spring:
+  application:
+    name: config-client
+  rabbitmq:
+    # rabbitmq的配置
+    host: 172.16.11.199
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      # 指明远程仓库的分支
+      label: master
+      # 隔离环境 dev开发环境配置文件 test测试环境 pro正式环境
+      profile: dev
+      # 配置服务中心的网址
+      uri: http://localhost:8888/
+      discovery:
+        # 配置中心读取文件
+        enabled: true
+        # 配置中心的servieId，即服务名
+        service-id: config-server
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8889/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
